@@ -1,0 +1,39 @@
+Hey before running my code you will need a database. Use this table below.
+Name this database as "db".
+
+CREATE TABLE Employee(
+    EmployeeID int NOT NULL PRIMARY KEY,
+    EmployeeFirstName VARCHAR(40) NOT NULL,
+    EmployeeLastName VARCHAR(40) NOT NULL,
+    EmployeeEmail VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE Customer(
+    CustomerID int NOT NULL PRIMARY KEY,
+    CustomerFirstName VARCHAR(40) NOT NULL,
+    CustomerLastName VARCHAR(40) NOT NULL,
+    CustomerPhoneNumber BIGINT NOT NULL,
+    CustomerEmail VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE Movie(
+    MovieID int NOT NULL PRIMARY KEY,
+    MovieTitle VARCHAR(30) NOT NULL,
+    MovieLanguage VARCHAR(20) NOT NULL,
+    MovieDuration int NOT NULL,
+    MovieType VARCHAR(10) NOT NULL,
+    TheaterRoomNumber int NOT NULL
+);
+
+CREATE TABLE Reservation(
+    ReservationID int NOT NULL PRIMARY KEY,
+        MovieID int NOT NULL,
+        EmployeeID int NOT NULL,
+        CustomerID int NOT NULL,
+    FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
+    FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID),
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+        DateTime TIMESTAMP NOT NULL,
+    SeatNumber int NOT NULL,
+    Cost int NOT NULL
+);
