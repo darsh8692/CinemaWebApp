@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCustomerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_customerid}" for="customerid" />
+                    <h:inputText id="customerid" value="#{customerController.selected.customerid}" title="#{bundle.EditCustomerTitle_customerid}" required="true" requiredMessage="#{bundle.EditCustomerRequiredMessage_customerid}"/>
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_customerfirstname}" for="customerfirstname" />
+                    <h:inputText id="customerfirstname" value="#{customerController.selected.customerfirstname}" title="#{bundle.EditCustomerTitle_customerfirstname}" required="true" requiredMessage="#{bundle.EditCustomerRequiredMessage_customerfirstname}"/>
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_customerlastname}" for="customerlastname" />
+                    <h:inputText id="customerlastname" value="#{customerController.selected.customerlastname}" title="#{bundle.EditCustomerTitle_customerlastname}" required="true" requiredMessage="#{bundle.EditCustomerRequiredMessage_customerlastname}"/>
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_customerphonenumber}" for="customerphonenumber" />                   
+                    <h:inputText id="customerphonenumber" value="#{customerController.selected.customerphonenumber}" title="#{bundle.EditCustomerTitle_customerphonenumber}" required="true" requiredMessage="#{bundle.EditCustomerRequiredMessage_customerphonenumber}" validatorMessage = "Wrong Length. Phone Number should be 10 digits.">
+                                 <f:validateLength minimum = "10" maximum = "10" />
+                    </h:inputText>
+
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_customeremail}" for="customeremail" />
+                    <h:inputText id="customeremail" value="#{customerController.selected.customeremail}" title="#{bundle.EditCustomerTitle_customeremail}" required="true" requiredMessage="#{bundle.EditCustomerRequiredMessage_customeremail}" validatorMessage="Incorrect Email format">
+                                 <f:validateRegex pattern="(^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[\p{L}\p{M}\p{N}.-]*(\.[\p{L}\p{M}]{2,})$)?" />
+                    </h:inputText>
+
+                                 
+                </h:panelGrid>
+                <h:commandLink action="#{customerController.update}" value="#{bundle.EditCustomerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCustomerViewLink}"/>
+                <br />
+                <h:commandLink action="#{customerController.prepareList}" value="#{bundle.EditCustomerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCustomerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

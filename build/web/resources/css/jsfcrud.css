@@ -1,0 +1,111 @@
+root { 
+    display: block;
+}
+
+body {
+    font-family: Times New Roman, serif;
+    color: #3a4f54;
+    background-color: #dfecf1;
+    font-size: x-large;
+    text-align: center;
+}
+
+a {
+    color: #e33b06;
+    font-size: 22px;
+}
+
+table {
+    empty-cells: show;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: small;
+    color: #4e6a71;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 3px;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #b2d5d6;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: medium;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.slider{
+    border: 5px solid #555;
+    width: 350px;
+    height: 500px;
+    margin: 100px auto;
+    background: url(1.jpg);
+    background-size: contain;
+    animation: slide 20s infinite;
+}
+
+ @keyframes slide{
+25%{
+background: url(2.jpg);
+}
+50%{
+background: url(3.jpg);
+}
+75%{
+background: url(4.jpg);
+}
+100%{
+background: url(1.jpg);
+}
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMovieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMovieLabel_movieid}" for="movieid" />
+                    <h:inputText id="movieid" value="#{movieController.selected.movieid}" title="#{bundle.CreateMovieTitle_movieid}" required="true" requiredMessage="#{bundle.CreateMovieRequiredMessage_movieid}"/>
+                    <h:outputLabel value="#{bundle.CreateMovieLabel_movietitle}" for="movietitle" />
+                    <h:inputText id="movietitle" value="#{movieController.selected.movietitle}" title="#{bundle.CreateMovieTitle_movietitle}" required="true" requiredMessage="#{bundle.CreateMovieRequiredMessage_movietitle}"/>
+                    <h:outputLabel value="#{bundle.CreateMovieLabel_movielanguage}" for="movielanguage" />
+                    <h:inputText id="movielanguage" value="#{movieController.selected.movielanguage}" title="#{bundle.CreateMovieTitle_movielanguage}" required="true" requiredMessage="#{bundle.CreateMovieRequiredMessage_movielanguage}"/>
+                    <h:outputLabel value="#{bundle.CreateMovieLabel_movieduration}" for="movieduration" />
+                    <h:inputText id="movieduration" value="#{movieController.selected.movieduration}" title="#{bundle.CreateMovieTitle_movieduration}" required="true" requiredMessage="#{bundle.CreateMovieRequiredMessage_movieduration}"/>
+                    <h:outputLabel value="#{bundle.CreateMovieLabel_movietype}" for="movietype" />
+                    <h:inputText id="movietype" value="#{movieController.selected.movietype}" title="#{bundle.CreateMovieTitle_movietype}" required="true" requiredMessage="#{bundle.CreateMovieRequiredMessage_movietype}"/>
+                    <h:outputLabel value="#{bundle.CreateMovieLabel_theaterroomnumber}" for="theaterroomnumber" />
+                    <h:inputText id="theaterroomnumber" value="#{movieController.selected.theaterroomnumber}" title="#{bundle.CreateMovieTitle_theaterroomnumber}" required="true" requiredMessage="#{bundle.CreateMovieRequiredMessage_theaterroomnumber}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{movieController.create}" value="#{bundle.CreateMovieSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{movieController.prepareList}" value="#{bundle.CreateMovieShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMovieIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

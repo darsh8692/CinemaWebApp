@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReservationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReservationLabel_reservationid}" for="reservationid" />
+                    <h:inputText id="reservationid" value="#{reservationController.selected.reservationid}" title="#{bundle.EditReservationTitle_reservationid}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_reservationid}"/>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_datetime}" for="datetime" />
+                    <h:inputText id="datetime" value="#{reservationController.selected.datetime}" title="#{bundle.EditReservationTitle_datetime}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_datetime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_seatnumber}" for="seatnumber" />
+                    <h:inputText id="seatnumber" value="#{reservationController.selected.seatnumber}" title="#{bundle.EditReservationTitle_seatnumber}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_seatnumber}"/>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_cost}" for="cost" />
+                    <h:inputText id="cost" value="#{reservationController.selected.cost}" title="#{bundle.EditReservationTitle_cost}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_cost}"/>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_customerid}" for="customerid" />
+                    <h:selectOneMenu id="customerid" value="#{reservationController.selected.customerid}" title="#{bundle.EditReservationTitle_customerid}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_customerid}">
+                        <f:selectItems value="#{customerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_employeeid}" for="employeeid" />
+                    <h:selectOneMenu id="employeeid" value="#{reservationController.selected.employeeid}" title="#{bundle.EditReservationTitle_employeeid}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_employeeid}">
+                        <f:selectItems value="#{employeeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditReservationLabel_movieid}" for="movieid" />
+                    <h:selectOneMenu id="movieid" value="#{reservationController.selected.movieid}" title="#{bundle.EditReservationTitle_movieid}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_movieid}">
+                        <f:selectItems value="#{movieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{reservationController.update}" value="#{bundle.EditReservationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditReservationViewLink}"/>
+                <br />
+                <h:commandLink action="#{reservationController.prepareList}" value="#{bundle.EditReservationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditReservationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
